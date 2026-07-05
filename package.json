@@ -7,6 +7,8 @@
     "studio": "remotion studio",
     "render": "node scripts/render-day.mjs",
     "render:all": "node scripts/render-day.mjs --all",
+    "match": "node scripts/render-topical.mjs match",
+    "promo": "node scripts/render-topical.mjs promo",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

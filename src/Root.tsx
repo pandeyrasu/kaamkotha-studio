@@ -43,6 +43,20 @@ import {
   CarouselProps,
 } from "./templates/Carousel";
 import { StatCard, statCardSchema } from "./templates/StatCard";
+import {
+  PromoPoster,
+  PromoReel,
+  promoSchema,
+  PromoProps,
+  PROMO_REEL_DURATION,
+} from "./templates/Promo";
+import {
+  MatchDayCard,
+  MatchDayReel,
+  matchDaySchema,
+  MatchDayProps,
+  MATCH_DAY_REEL_DURATION,
+} from "./templates/MatchDay";
 
 ensureFonts();
 
@@ -133,6 +147,41 @@ const REGISTRY: Registry = {
   },
 };
 
+/** Sample props for the topical compositions — override at render time with --props. */
+export const SAMPLE_PROMO: PromoProps = {
+  kicker: "KAAMKOTHA OFFER",
+  headline: [
+    { text: "Room पनि", accent: false },
+    { text: "verified,", accent: true },
+    { text: "job पनि", accent: false },
+    { text: "verified —", accent: true },
+    { text: "सबै", accent: false },
+  ],
+  megaWord: "FREE!",
+  offerTitle: "Refer गर्दा दुवैले पाउनुहोस्",
+  offerSub: "1 Month Featured Listing",
+  heroImage: "",
+  heroEmojis: ["🏠", "💼", "🛕", "🥟", "🎉"],
+  detailTitle: "This month only",
+  detailLines: ["Invite a friend to KaamKotha र", "Business listing मा पाउनुहोस्"],
+  badgeValue: "50%",
+  badgeSuffix: "OFF",
+  disclaimer: "Offer valid for UK-registered businesses only. Ends 30 April 2026.*",
+};
+
+export const SAMPLE_MATCH: MatchDayProps = {
+  tournament: "FIFA World Cup 2026",
+  dateLine: "Today · Sunday 5 July",
+  homeTeam: "England",
+  homeFlag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+  awayTeam: "Mexico",
+  awayFlag: "🇲🇽",
+  timeLine: "Kick-off 5:00 PM UK",
+  tvLine: "BBC One · iPlayer",
+  hook: "Momo स्टीममा, TV अन — where is the UK Nepali fam watching today? 🥟⚽",
+  commentPrompt: "Score prediction",
+};
+
 export const entryCompositionId = (entry: CalendarEntry) =>
   `Day-${String(entry.day).padStart(2, "0")}-${entry.template}`;
 
@@ -192,6 +241,48 @@ export const RemotionRoot: React.FC = () => {
             />
           );
         })}
+      </Folder>
+      <Folder name="Topical">
+        <Composition
+          id="Promo-Poster"
+          component={PromoPoster}
+          schema={promoSchema}
+          durationInFrames={1}
+          fps={reel.fps}
+          width={portrait.width}
+          height={portrait.height}
+          defaultProps={SAMPLE_PROMO}
+        />
+        <Composition
+          id="Promo-Reel"
+          component={PromoReel}
+          schema={promoSchema}
+          durationInFrames={PROMO_REEL_DURATION}
+          fps={reel.fps}
+          width={reel.width}
+          height={reel.height}
+          defaultProps={SAMPLE_PROMO}
+        />
+        <Composition
+          id="Match-Card"
+          component={MatchDayCard}
+          schema={matchDaySchema}
+          durationInFrames={1}
+          fps={reel.fps}
+          width={square.width}
+          height={square.height}
+          defaultProps={SAMPLE_MATCH}
+        />
+        <Composition
+          id="Match-Reel"
+          component={MatchDayReel}
+          schema={matchDaySchema}
+          durationInFrames={MATCH_DAY_REEL_DURATION}
+          fps={reel.fps}
+          width={reel.width}
+          height={reel.height}
+          defaultProps={SAMPLE_MATCH}
+        />
       </Folder>
     </>
   );

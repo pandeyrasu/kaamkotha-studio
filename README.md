@@ -51,6 +51,41 @@ Colors (Nepal-flag crimson + navy + gold), the six pillar accent colors,
 canvas presets, and self-hosted fonts (Poppins for Latin, Noto Sans Devanagari
 for Nepali — bundled in `public/fonts/`, no network needed at render time).
 
+## Topical / on-demand content
+
+Beyond the fixed calendar, the `Topical` folder holds ad-hoc templates you can
+render any day with fresh props — no code changes needed.
+
+### Match-day content (sports moment marketing)
+
+```bash
+# Square feed card + animated 9:16 reel for today's game:
+npm run match -- --home England --away Mexico --time "5:00 PM UK" --tv "BBC One · iPlayer"
+
+# Any fixture, any tournament — flags are auto-matched for common teams
+# (or pass --home-flag/--away-flag explicitly):
+npm run match -- --home Nepal --away India --tournament "SAFF Championship" \
+  --hook "Who's watching at the Gurkha pub tonight?" --card-only
+```
+
+Defaults: tournament "FIFA World Cup 2026", date = today, and a KaamKotha
+community hook ("where is the UK Nepali fam watching?"). Output:
+`out/match-<home>-vs-<away>.png` + `.mp4`.
+
+### Promo poster + reel (ad-style offers)
+
+Classic promo-ad layout — mixed Nepali/English headline, giant accent word,
+offer box, hero visual, % badge and disclaimer strip:
+
+```bash
+npm run promo                          # built-in sample offer
+npm run promo -- --config offer.json   # your own copy (see promoSchema in src/templates/Promo.tsx)
+```
+
+Renders `Promo-Poster` (1080×1350 still) and `Promo-Reel` (animated 9:16).
+Set `heroImage` in the config to a URL or a file in `public/` to use a real
+photo (like a model shot); leave it empty for the styled emoji hero.
+
 ## Rendering details
 
 - Video days render straight to `out/day-NN-<Template>.mp4` (H.264, 30fps).
