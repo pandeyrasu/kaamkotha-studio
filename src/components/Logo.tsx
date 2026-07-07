@@ -6,6 +6,7 @@ import {
   useVideoConfig,
 } from "remotion";
 import { COLORS, FONT_FAMILY } from "../brand";
+import { LogoMark } from "./LogoMark";
 
 /**
  * KaamKotha wordmark: rounded "KK" tile + wordmark.
@@ -43,27 +44,14 @@ export const Logo: React.FC<{
     >
       <div
         style={{
-          width: size,
-          height: size,
-          borderRadius: size * 0.24,
-          background: `linear-gradient(135deg, ${COLORS.crimson}, ${COLORS.crimsonDark})`,
           display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
           transform: `scale(${pop}) rotate(${interpolate(pop, [0, 1], [-12, 0])}deg)`,
-          boxShadow: "0 18px 50px rgba(0,0,0,0.35)",
+          filter: onDark
+            ? "drop-shadow(0 10px 30px rgba(0,0,0,0.45)) drop-shadow(0 0 2px rgba(255,255,255,0.35))"
+            : "drop-shadow(0 10px 26px rgba(20,17,24,0.25))",
         }}
       >
-        <span
-          style={{
-            color: COLORS.white,
-            fontWeight: 900,
-            fontSize: size * 0.46,
-            letterSpacing: -size * 0.02,
-          }}
-        >
-          KK
-        </span>
+        <LogoMark height={size} />
       </div>
       <div
         style={{

@@ -3,14 +3,14 @@ import { staticFile } from "remotion";
 
 /**
  * KaamKotha brand kit.
- * Palette is anchored on the Nepali flag crimson + blue,
+ * Official brand colors: crimson #DC143C and blue #003893 (Nepal flag),
  * with pillar accent colors matching the content calendar.
  */
 export const COLORS = {
-  crimson: "#C8102E",
-  crimsonDark: "#8E0B20",
-  navy: "#12275E",
-  navyDeep: "#0A1638",
+  crimson: "#DC143C",
+  crimsonDark: "#9E0E2B",
+  navy: "#003893",
+  navyDeep: "#001B4E",
   cream: "#FFF6EC",
   white: "#FFFFFF",
   ink: "#141118",
@@ -19,7 +19,7 @@ export const COLORS = {
 
 /** Content-pillar accents (🔴 Promo, 🔵 Education, 🟣 Entertainment, 🟡 Trending, 🟢 Virality, 🟠 Cultural) */
 export const PILLARS = {
-  promo: { color: "#C8102E", label: "Promo", emoji: "🔴" },
+  promo: { color: "#DC143C", label: "Promo", emoji: "🔴" },
   education: { color: "#1D6FE0", label: "Education", emoji: "🔵" },
   entertainment: { color: "#8A4FD3", label: "Entertainment", emoji: "🟣" },
   trending: { color: "#F2B705", label: "Trending", emoji: "🟡" },

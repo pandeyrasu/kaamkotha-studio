@@ -47,9 +47,12 @@ Remotion Studio's right-hand panel and copy the JSON back.
 
 ### Brand kit (`src/brand.ts`)
 
-Colors (Nepal-flag crimson + navy + gold), the six pillar accent colors,
-canvas presets, and self-hosted fonts (Poppins for Latin, Noto Sans Devanagari
-for Nepali — bundled in `public/fonts/`, no network needed at render time).
+Official brand colors — crimson `#DC143C` and blue `#003893` — plus gold
+accent, the six pillar accent colors, and canvas presets. The official KK
+monogram is inlined as a React component (`src/components/LogoMark.tsx`,
+source SVG in `public/brand/`) and used by every template via `Logo`.
+Fonts are self-hosted (Poppins for Latin, Noto Sans Devanagari for Nepali —
+bundled in `public/fonts/`, no network needed at render time).
 
 ## Topical / on-demand content
 
